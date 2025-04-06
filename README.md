@@ -1,4 +1,4 @@
-# Laravel 10 檢查應用程式是否使用已知安全漏洞的依賴套件
+# Laravel 11 檢查應用程式是否使用已知安全漏洞的依賴套件
 
 引入 jorijn 的 laravel-security-checker 套件來擴增應用程式是否使用已知安全漏洞的依賴套件檢查，如果有一個容易受到攻擊的依賴套件被駭客利用，就可能導致資料洩漏或伺服器被利用，且使用有漏洞的依賴套件，都會破壞應用程式的防護，讓各種攻擊形式接踵而來，使用第三方套件儘管可以節省開發時間，但必須能時時追蹤資安訊息，以便即時更新。
 
@@ -20,9 +20,13 @@ $ php artisan key:generate
 ```sh
 $ php artisan security-check:{now|email|slack}
 ```
+- 啟動排程器，僅需要在伺服器上增加一條 Cron 項目即可。
+```sh
+* * * * * cd /{專案路徑} && php artisan schedule:run >> /dev/null 2>&1
+```
 
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/oswxpa5.png)
+![](https://i.imgur.com/eAZjD3a.png)
 > 如果在第一時間就能接獲通報、了解問題並修正解決，儘速更新依賴套件，系統資料安全風險會較低
